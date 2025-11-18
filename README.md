@@ -4,7 +4,9 @@ Wrapper Docker image for [CoMapeo Cloud](https://github.com/digidem/comapeo-clou
 
 ## Why This Wrapper?
 
-The [`comapeo-cloud`](https://github.com/digidem/comapeo-cloud) Dockerfile runs as a non-root `node` user, which can't write to mounted volumes without proper permissions. This wrapper:
+The [`comapeo-cloud`](https://github.com/digidem/comapeo-cloud) Dockerfile runs as a non-root `node` user, which can't write to mounted volumes without proper permissions. 
+
+This wrapper:
 
 1. Starts as `root` 
 2. Creates and `chown`s the `STORAGE_DIR` to `node:node`

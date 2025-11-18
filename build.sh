@@ -11,16 +11,13 @@ LATEST_VERSION=$(curl -s "https://hub.docker.com/v2/repositories/communityfirst/
 
 echo "Building wrapper for upstream version: $LATEST_VERSION"
 
-TIMESTAMP=$(date +%Y%m%d)
-TAG="${LATEST_VERSION}-${TIMESTAMP}"
-
 docker build \
   --build-arg BASE_VERSION="$LATEST_VERSION" \
   -t communityfirst/gc-comapeo-cloud:latest \
-  -t communityfirst/gc-comapeo-cloud:"$TAG" \
+  -t communityfirst/gc-comapeo-cloud:"$LATEST_VERSION" \
   .
 
-echo "Pushing tags: latest, $TAG"
+echo "Pushing tags: latest, $LATEST_VERSION"
 docker push communityfirst/gc-comapeo-cloud:latest
-docker push communityfirst/gc-comapeo-cloud:"$TAG"
+docker push communityfirst/gc-comapeo-cloud:"$LATEST_VERSION"
 
